@@ -1,25 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,700;1,300&display=swap"
+        rel="stylesheet">
+
+    <link href="css/normalize.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/small.css" rel="stylesheet">
+    <link href="css/medium.css" rel="stylesheet">
+    <link href="css/large.css" rel="stylesheet">
+
     <title>Document</title>
 </head>
+
 <body>
-    
-    <h1>Your Lucky Fortune</h1>
 
-    <span id="fortunetext">Hello World</span>
+    <main>
+        <div class="row limited">
+            
+            <section class="column small-12 medium-6 large-3">
+                <h1>Your Lucky Fortune</h1>
+                <h2 id="fortunetext">Hello World</h2>
 
+            </section>
 
-    <script src="js/functions.js"></script> 
-    
-    <h2>Your Lucky Numbers</h2>
+            <section class="column small-12 medium-6 large-3">
+                <h1>Your Lucky Numbers</h1>
+                <h2 id="numberstext">01-02-03-04-05-06</h2>
+            </section>
+            
+        </div>
+    </main>
 
-    <span id="numberstext">01-02-03-04-05-06</span>
+    <footer class="clearfix">
+        <div class="row limited">
+            <section class="column small-12 medium-6 large-3">
+                <script src="js/functions.js"></script>
+                <button onclick="loadFortune()">Generate new fortune</button>
+            </section>
+        </div>
+    </footer>
 
-    <button onclick="loadFortune()">Generate new fortune</button>
 
 </body>
 </html>
