@@ -1,5 +1,7 @@
+'use strict'; //forces all variables to be declared
+
 function loadFortune() {
-    var rand = getRand(0, 8);
+    let rand = getRand(0, 8);
 
     switch (rand) {
         case 0:
@@ -18,7 +20,7 @@ function loadFortune() {
             fortunetext.innerHTML = loadConfucious();
             break;
         default:
-            var message = "number " + rand + " not handled";
+            let message = "number " + rand + " not handled";
             alert(message);
             return;
     }
@@ -27,15 +29,13 @@ function loadFortune() {
 }
 
 function loadProphecy() {
-    var subject = getProphecySubject();
-    var message = subject + " " + getProphecyVerb(subject);
-    message += " " + getProphecyPredicate() + ".";
-
-    return message;
+    let subject = getProphecySubject();
+    
+    return `${subject} ${getProphecyVerb(subject)} ${getProphecyPredicate()}.`;
 }
 
 function loadRambling() {
-    return getRamblingSubject() + " " + getRamblingVerb() + " " + getRamblingPredicate() + ".";
+    return `${getRamblingSubject()} ${getRamblingVerb()} ${getRamblingPredicate()}.`;
 }
 
 function loadConfucious() {
@@ -55,7 +55,7 @@ function loadConfucious() {
         , "Man who cut self while shaving, lose face."
     ]
 
-    var rand = getRand(0, choices.length - 1);
+    let rand = getRand(0, choices.length - 1);
 
     return choices[rand];
 }
@@ -72,15 +72,34 @@ function getProphecySubject() {
         , "A business associate"
         , "A long-time acquaintance"
         , "A neighbor"
+        , "A recent dream"
+        , "A stranger"
     ];
 
-    var rand = getRand(0, choices.length - 1);
+    let rand = getRand(0, choices.length - 1);
 
     return choices[rand];
 }
 
 function getProphecyVerb(subject) {
-    const choices = [
+   
+    let adverb = "";
+
+    let rand = getRand(0, 10);
+    if (rand > 9)  //randomize if adverb will be used
+    {
+        const adverbs = [
+            "subtlely"
+            , "unexpectedly"
+            , "graciously"
+        ];
+        rand = getRand(0, adverbs.length - 1);
+        adverb = adverbs[rand];
+    }
+
+    //now get verb
+
+    const verbs = [
         "finds"
         , "shares"
         , "reveals"
@@ -92,17 +111,19 @@ function getProphecyVerb(subject) {
         , "suggests"
     ];
 
-    var rand = getRand(0, choices.length - 1);
+    rand = getRand(0, verbs.length - 1);
 
-    var choice = choices[rand];
+    let choice = verbs[rand];
+    if (adverb !== "")
+      choice = adverb + " " + choice;
 
-    var isFutureTense = getRand(0, 1);
+    let isFutureTense = getRand(0, 1);
     if (isFutureTense === 1) {
         choice = "will " + choice;
     }
 
     if ((subject === "You") || (isFutureTense === 1)) {
-        if (choice.substring(choice.length - 3, 3) === "ses") {
+        if (getRightChars(choice, 3) === "ses") {
             choice = choice.substring(0, choice.length - 2);
         }
         else {
@@ -120,14 +141,17 @@ function getProphecyPredicate() {
         , "a positive outlook"
         , "inner peace"
         , "the meaning of life"
-        , "vacation plans"
+        , "plans for a vacation"
         , "a new addition to the family"
         , "a welcome change"
         , "a much-needed rest"
         , "a deep-rooted secret"
+        , "a pleasant memory"
+        , "unresolved issues"
+        , "absolutely nothing"
     ];
 
-    var rand = getRand(0, choices.length - 1);
+    let rand = getRand(0, choices.length - 1);
 
     return choices[rand];
 }
@@ -136,9 +160,11 @@ function getRamblingSubject() {
     const choices = [
         "Patience"
         , "Self-discovery"
+        , "Modesty"
+        , "Humility"
     ];
 
-    var rand = getRand(0, choices.length - 1);
+    let rand = getRand(0, choices.length - 1);
 
     return choices[rand];
 }
@@ -152,7 +178,7 @@ function getRamblingVerb() {
         , "emboldens"
     ];
 
-    var rand = getRand(0, choices.length - 1);
+    let rand = getRand(0, choices.length - 1);
 
     return choices[rand];
 }
@@ -166,41 +192,48 @@ function getRamblingPredicate() {
         , "peace"
     ];
 
-    var rand = getRand(0, choices.length - 1);
+    let rand = getRand(0, choices.length - 1);
 
     return choices[rand];
 }
 
+function getRightChars(what, howMany)
+{
+    return what.substring(what.length - howMany, what.length);
+}
+
 function updateNumbers() {
-    var allowed = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26
+    let allowed = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26
         , 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52];
-    var count;
-    var returned = [];
+    let count;
+    let returned = [];
     for (count = 0; count < 6; count++) {
-        var i = getRand(0, allowed.length - 1);
+        let i = getRand(0, allowed.length - 1);
         returned.push(allowed[i]);
         allowed.splice(i, 1);
     }
 
-    numberstext.innerHTML = getNumericDisplay(returned[0])
-        + "-" + getNumericDisplay(returned[1])
-        + "-" + getNumericDisplay(returned[2])
-        + "-" + getNumericDisplay(returned[3])
-        + "-" + getNumericDisplay(returned[4])
-        + "-" + getNumericDisplay(returned[5]);
+    numberstext.innerHTML = 
+        ` ${getNumericDisplay(returned[0])}
+        - ${getNumericDisplay(returned[1])}
+        - ${getNumericDisplay(returned[2])}
+        - ${getNumericDisplay(returned[3])}
+        - ${getNumericDisplay(returned[4])}
+        - ${getNumericDisplay(returned[5])} `;
 }
 
 function getNumericDisplay(what) {
+    //forces a (minimum) 2-char representation of a number
 
-    var temp = '' + what;
+    let temp = what.toString();
 
-    if (temp.length === 2)
+    if (temp.length > 1)
     {
         return temp;
     }
 
-    temp = '0' + temp;
-    return (temp).substring(temp.length - 2, 2);
+    temp = '00' + temp;
+    return (temp).substring(temp.length - 2, temp.length);
 }
 
 // JavaScript feature fulfillment:
@@ -208,8 +241,8 @@ function getNumericDisplay(what) {
 // (calculates something) and displays the result on your page or otherwise uses 
 // that value to do something on the site.
 function getRand(lower = 0, upper = 1) {
-    var seed = new Date().getMilliseconds() * Math.random();
-    return Math.floor(Math.round((seed / 1000) * (upper - lower) + lower + 0.4));
+    let seed = new Date().getMilliseconds() * Math.random();
+    return Math.floor(Math.round((seed / 1000) * (upper - lower) + lower + 0.5));
 }
 
 window.onload = function () {
