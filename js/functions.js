@@ -92,6 +92,7 @@ function getProphecyVerb(subject) {
             "subtlely"
             , "unexpectedly"
             , "graciously"
+            , "repeatedly"
         ];
         rand = getRand(0, adverbs.length - 1);
         adverb = adverbs[rand];
