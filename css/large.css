@@ -1,6 +1,8 @@
 @media only screen and (min-width: 1024px) {
     
-    .large-3 {width: 33.3333%;}
-    
+    .flexbox
+    {
+        flex-direction: column;
+    }
     
 } /* end of media query */

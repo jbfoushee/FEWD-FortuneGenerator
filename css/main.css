@@ -1,35 +1,34 @@
-html {-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;}
-
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+html { 
+    -webkit-text-size-adjust: 100%;
+     -ms-text-size-adjust: 100%;
+
+    background: url("../images/pexels-rodnae-productions-6691735.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
 
 
 body {
     font-family: 'Lato', sans-serif;
     font-size: 16px;
-    font-weight: 300;
 }
-
-/* GRID */
-.row {clear: both;}
-.limited {
-    max-width: 1140px; 
-    margin: auto;
-}
-
-.column {float: left; padding: 0 2vw; margin: 0 0 .75rem 0;}
 
 header {
     background-color: #9b87b8;
+    font-weight: lighter;
 }
 header img {
     float: left; 
     padding-right: 10px; 
 }
-header h1, header h2 {
+header h1, header h2, header h3 {
     margin: 0;
-    color: #fff; 
-    font-weight: 300;
-    font-style: italic;
+    color: #fff;
+    font-style: normal;
 }
 header h1 { 
 	padding: .5rem 0 0 0; 
@@ -37,9 +36,23 @@ header h1 {
 header h2{
 	padding: .2rem 0 0 0; 
 }
+header h3{
+    padding: .2rem 0 0 0; 
+}
 
-.clearfix:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
+.flexbox{
+    gap: 10px 50px;
+    display: flex;
+    justify-content: left;
+    flex-wrap: nowrap;
+}
+.child {
+    margin-left: 10px;
+}
+.footnote
+{
+    height: 200px;
+    align-self: flex-end;
+    margin: 10px;
+    margin-top: auto;
+}

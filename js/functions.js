@@ -200,8 +200,27 @@ function getRamblingPredicate() {
 
 function getRightChars(what, howMany)
 {
+    if (!isNumeric(howMany))
+    {
+        let message = "parameter howMany must be a number";
+        alert(message);
+        return "";
+    }
+
+    if (what.length < howMany)
+    {
+        let message = "length of string is shorter than howMany parameter";
+        alert(message);
+        return "";
+    }
+
+
     return what.substring(what.length - howMany, what.length);
 }
+function isNumeric(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
 
 function updateNumbers() {
     let allowed = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26

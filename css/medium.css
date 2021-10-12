@@ -2,8 +2,18 @@
     
     h1 {font-size: 2.85rem;}
     h2 {font-size: 1.5rem; }
-    img {height: 100px;}
     
-   .medium-6 {width: 50%;}
+    html{
+        background: url("../images/pexels-rodnae-productions-6691708.jpg") no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+   .flexbox
+   {
+       flex-direction: row;
+   }
 
 } /* end of media query */

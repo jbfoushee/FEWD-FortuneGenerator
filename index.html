@@ -15,39 +15,46 @@
     <link href="css/medium.css" rel="stylesheet">
     <link href="css/large.css" rel="stylesheet">
 
-    <title>Document</title>
+    <title>Fortune Cookie Fortune Generator</title>
 </head>
 
 <body>
 
     <main>
-
-        hello
-        <div class="row limited">
-            
-            <section class="column small-12 medium-6 large-3">
-                <h1>Your Lucky Fortune</h1>
-                <h2 id="fortunetext">Hello World</h2>
-
-            </section>
-
-            <section class="column small-12 medium-6 large-3">
-                <h1>Your Lucky Numbers</h1>
-                <h2 id="numberstext">01-02-03-04-05-06</h2>
-            </section>
-            
+        <h1>Fortune Cookie Fortune Generator</h1>
+        <div class="flexbox">
+            <div>
+                <section class="child">
+                    <h2>Your Lucky Fortune</h2>
+                    <h3 id="fortunetext">Hello World</h3>
+                </section>
+            </div>
+            <div>
+                <section class="child">
+                    <h2>Your Lucky Numbers</h2>
+                    <h3 id="numberstext">01-02-03-04-05-06</h3>
+                </section>
+            </div>
         </div>
-    </main>
 
-    <footer class="clearfix">
-        <div class="row limited">
-            <section class="column small-12 medium-6 large-3">
+        <div class="flexbox">
+
+            <section class="child">
                 <script src="js/functions.js"></script>
                 <button onclick="loadFortune()">Generate new fortune</button>
             </section>
         </div>
+
+    </main>
+
+    <footer class="flexbox">
+
+        <div class="footnote">
+            <span>
+                Images from https://www.pexels.com/@rodnae-prod
+            </span>
+        </div>
     </footer>
-
-
 </body>
+
 </html>
