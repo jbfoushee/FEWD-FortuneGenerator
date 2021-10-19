@@ -9,15 +9,15 @@ function loadFortune() {
         case 2:
         case 3:
         case 4:
-            fortunetext.innerHTML = loadProphecy();
+            document.getElementById("fortunetext").textContent = loadProphecy();
             break;
         case 5:
         case 6:
         case 7:
-            fortunetext.innerHTML = loadRambling();
+            document.getElementById("fortunetext").textContent = loadRambling();
             break;
         case 8:
-            fortunetext.innerHTML = loadConfucious();
+            document.getElementById("fortunetext").textContent = loadConfucious();
             break;
         default:
             let message = "number " + rand + " not handled";
@@ -30,7 +30,7 @@ function loadFortune() {
 
 function loadProphecy() {
     let subject = getProphecySubject();
-    
+
     return `${subject} ${getProphecyVerb(subject)} ${getProphecyPredicate()}.`;
 }
 
@@ -40,9 +40,9 @@ function loadRambling() {
 
 function loadConfucious() {
 
-// JavaScript feature fulfillment:
-// Create and populate a JavaScript array with one or more values and
-// display the contents of some or all of the array on your page
+    // JavaScript feature fulfillment:
+    // Create and populate a JavaScript array with one or more values and
+    // display the contents of some or all of the array on your page
     const choices = [
         "Man who stands on toilet is high on pot."
         , "Man who fall into an upholstery machine, eventually be fully recovered."
@@ -82,7 +82,7 @@ function getProphecySubject() {
 }
 
 function getProphecyVerb(subject) {
-   
+
     let adverb = "";
 
     let rand = getRand(0, 10);
@@ -116,7 +116,7 @@ function getProphecyVerb(subject) {
 
     let choice = verbs[rand];
     if (adverb !== "")
-      choice = adverb + " " + choice;
+        choice = adverb + " " + choice;
 
     let isFutureTense = getRand(0, 1);
     if (isFutureTense === 1) {
@@ -198,22 +198,18 @@ function getRamblingPredicate() {
     return choices[rand];
 }
 
-function getRightChars(what, howMany)
-{
-    if (!isNumeric(howMany))
-    {
+function getRightChars(what, howMany) {
+    if (!isNumeric(howMany)) {
         let message = "parameter howMany must be a number";
         alert(message);
         return "";
     }
 
-    if (what.length < howMany)
-    {
+    if (what.length < howMany) {
         let message = "length of string is shorter than howMany parameter";
         alert(message);
         return "";
     }
-
 
     return what.substring(what.length - howMany, what.length);
 }
@@ -223,17 +219,17 @@ function isNumeric(n) {
 
 
 function updateNumbers() {
-    let allowed = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26
+    let candidates = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26
         , 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52];
     let count;
     let returned = [];
     for (count = 0; count < 6; count++) {
-        let i = getRand(0, allowed.length - 1);
-        returned.push(allowed[i]);
-        allowed.splice(i, 1);
+        let i = getRand(0, candidates.length - 1);
+        returned.push(candidates[i]);
+        candidates.splice(i, 1);
     }
 
-    numberstext.innerHTML = 
+    document.getElementById("numberstext").textContent =
         ` ${getNumericDisplay(returned[0])}
         - ${getNumericDisplay(returned[1])}
         - ${getNumericDisplay(returned[2])}
@@ -247,8 +243,7 @@ function getNumericDisplay(what) {
 
     let temp = what.toString();
 
-    if (temp.length > 1)
-    {
+    if (temp.length > 1) {
         return temp;
     }
 
@@ -261,8 +256,11 @@ function getNumericDisplay(what) {
 // (calculates something) and displays the result on your page or otherwise uses 
 // that value to do something on the site.
 function getRand(lower = 0, upper = 1) {
-    let seed = new Date().getMilliseconds() * Math.random();
-    return Math.floor(Math.round((seed / 1000) * (upper - lower) + lower + 0.5));
+    let seed = Math.random()
+    return Math.floor(Math.round(seed * (upper - lower) + lower + 0.5));
+
+    //let seed = new Date().getMilliseconds() * Math.random();
+    //return Math.floor(Math.round((seed / 1000) * (upper - lower) + lower + 0.5));
 }
 
 window.onload = function () {

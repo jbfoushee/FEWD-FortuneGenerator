@@ -1,8 +1,7 @@
 @media only screen and (min-width: 1024px) {
-    
-    .flexbox
-    {
+    .flexbox {
         flex-direction: column;
     }
-    
-} /* end of media query */
+}
+
+/* end of media query */
