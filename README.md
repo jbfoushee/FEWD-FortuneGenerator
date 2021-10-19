@@ -6,7 +6,7 @@ We need a way to get to the fortune faster. Furthermore, if we don't like the fo
 we receive, we should be able to generate alternatives until satisfied.
 
 The following website does just that.
-Using [syllabus](https://docs.google.com/document/d/1TfmuWL3wTJ2HgdixkrgJysZl-wpoY7awePX-e-wYis4/edit) features such as 
+Using [syllabus](https://docs.google.com/document/d/1TfmuWL3wTJ2HgdixkrgJysZl-wpoY7awePX-e-wYis4/edit){:target="_blank"} features such as 
 - CSS flexbox
 - JavaScript arrays and 
 - mathematical functions, 
