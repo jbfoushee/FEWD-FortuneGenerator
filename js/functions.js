@@ -3,6 +3,7 @@
 function loadFortune() {
     let rand = getRand(0, 8);
 
+    //choose Prophecy 5 of 9 times, Rambling 3 of 9 times, and Confucious 1 of 9 times
     switch (rand) {
         case 0:
         case 1:
