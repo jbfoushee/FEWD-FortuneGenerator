@@ -18,3 +18,10 @@ img {
 .flexbox {
     flex-direction: column;
 }
+
+@media only screen and (min-width: 500px) {
+    .flexbox {
+        /* switch from a column- to a row-layout if screen is rotated */
+        flex-direction: row;
+    }
+}
