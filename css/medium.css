@@ -16,6 +16,8 @@
         background-size: cover;
     }
     .flexbox {
+
+        /* switch from a column- to a row-layout */
         flex-direction: row;
     }
 }
